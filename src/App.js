@@ -1,50 +1,58 @@
 import React from 'react';
 
-
-const buttomA = <button>Historico de clientes</button>
-const buttomB = <button>Cadastrar clientes</button>
-
-const hasCustomer = true;
+const listCustomer = [
+  {
+    id: 1,
+    name: 'Jose',
+    skill: ['React', 'Node', 'CSS', 'JavaScript', 'HTML']
+  },
+  {
+    id: 2,
+    name: 'Andre',
+    skill: ['CSS', 'JavaScript', 'HTML']
+  },
+  {
+    id: 3,
+    name: 'Miguel',
+    skill: ['Java', 'CSS', 'JavaScript', 'HTML']
+  },
+  {
+    id: 4,
+    name: 'Pedro',
+    skill: ['C#', 'GitHub', 'CSS', 'JavaScript', 'HTML']
+  }
+]
 
 const App = () => {
 
-
-const ShowHistorico = () => (
-    <div>
-    Cliclar no botão abaixo
-      <br />
-      {buttomA}
-  </div>
-)
-
-const AddCustomer = () => (
-    <div>
-      Cliclar no botão Cadastrar Clintes
-      <br />
-      {buttomB}
-  </div>
-)
-
-const renderShowCustomer = () => {
-  if (!hasCustomer) return null
-
+const renderListCustomer = (customer) => {
   return (
-    <div>
-        <h1>Nome do cliente: Nelson HG</h1>
+    <div key = {customer.id}>
+        <li>{customer.name}</li>
+        {customer.skill.map(renderSkillCustomer)}
+    </div>
+  )
+}
+
+const renderSkillCustomer = (skill) => {
+  return (
+    <div style = {{paddingLeft: 20}} key= {skill}>
+      <li>{skill}</li>
     </div>
   )
 }
 
   return (
-    <div>
-      <p>Digital Invovation one</p>
-      <p>Bem-vindo a nosso primeiro Exercies</p>
-      {hasCustomer ? ShowHistorico() : AddCustomer()}
       <div>
-        {renderShowCustomer()}
+        <p>Digital Invovation one</p>
+        <p>Bem-vindo a nosso primeiro Exercies</p>
+        <div>
+          <ul>
+            {listCustomer.map(renderListCustomer)}
+          </ul>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
 export default App;

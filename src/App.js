@@ -25,6 +25,12 @@ const listCustomer = [
 
 const App = () => {
 
+  const showActionEvento = () => {
+    console.log('Evento Activado no Click');
+  }
+  
+  const myButton = <button onClick= {showActionEvento}>Mostrar Evento</button>
+
 const renderListCustomer = (customer) => {
   return (
     <div key = {customer.id}>
@@ -51,6 +57,7 @@ const renderSkillCustomer = (skill) => {
             {listCustomer.map(renderListCustomer)}
           </ul>
         </div>
+        {myButton}
       </div>
     );
   };
